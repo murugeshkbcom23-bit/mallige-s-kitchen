@@ -1,0 +1,263 @@
+<!doctype html>
+<!--
+Mallige's Kitchen
+Single-file static website (index.html)
+
+Instructions to put on GitHub Pages:
+1. Create a new repository on GitHub (e.g. malliges-kitchen).
+2. Add this index.html as the repository root file (you can paste this file or upload it).
+3. In repo Settings -> Pages, select the main branch and / (root) folder and save. Your site will be published at https://<your-username>.github.io/<repo-name>/ within a minute or two.
+
+This file uses Google Fonts (Playfair Display for headings, Poppins for body). It is fully self-contained otherwise.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mallige's Kitchen — baking & cooking</title>
+
+  <!-- Feminine fonts: Playfair Display (headings) + Poppins (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <meta name="description" content="Mallige's Kitchen — pastel recipes, baking tips, and cozy home cooking." />
+
+  <style>
+    :root{
+      --pink: #ffdfe8;  /* pastel pink */
+      --blue: #e6f0ff;  /* pastel blue */
+      --yellow: #fff7d9;/* pastel yellow */
+      --accent: #f7c6d6;/* slightly stronger pink */
+      --muted: #6b6b6b;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:#222;
+      background: linear-gradient(180deg, var(--pink) 0%, var(--blue) 50%, var(--yellow) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:48px;
+    }
+
+    header{
+      max-width:1100px;
+      margin:28px auto;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:12px 18px;
+      border-radius:12px;
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.65);
+      box-shadow: var(--card-shadow);
+    }
+
+    .logo{
+      width:72px; height:72px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+      border:1px solid rgba(0,0,0,0.04);
+      font-family: 'Playfair Display', serif;
+      font-weight:700;
+      color:#b92a5b;
+      font-size:20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .site-title{
+      flex:1;
+    }
+
+    .site-title h1{
+      margin:0; font-family:'Playfair Display', serif; font-size:22px; color:#b93b64;
+    }
+    .site-title p{margin:2px 0 0 0; color:var(--muted); font-size:13px}
+
+    nav{display:flex; gap:12px; align-items:center}
+    nav a{padding:8px 12px; border-radius:10px; text-decoration:none; color:#333; font-weight:600}
+    nav a.cta{background:var(--accent); color:#6b0e36}
+
+    main{max-width:1100px; margin:24px auto; padding:0 18px}
+
+    .hero{
+      display:grid; grid-template-columns: 1fr 360px; gap:22px; align-items:center; margin-bottom:20px;
+    }
+
+    .hero-card{
+      padding:28px; border-radius:20px; background:rgba(255,255,255,0.8); box-shadow:var(--card-shadow);
+    }
+    .hero-card h2{font-family:'Playfair Display', serif; margin:0 0 8px 0; font-size:28px; color:#a32f57}
+    .hero-card p{margin:0 0 12px 0; color:var(--muted)}
+    .hero-cta{display:flex; gap:10px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600}
+    .btn-primary{background:#ffb6cc;color:#590b36}
+    .btn-outline{background:transparent;border:1px solid rgba(0,0,0,0.07)}
+
+    .newsletter{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff0);}
+    .newsletter input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);margin-top:8px}
+
+    /* Recipes grid */
+    .section{margin:20px 0}
+    .section h3{font-family:'Playfair Display', serif;margin:0 0 12px 0;color:#8a2b4b}
+
+    .grid{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:16px}
+
+    .card{background:rgba(255,255,255,0.85);border-radius:14px;padding:14px;box-shadow:var(--card-shadow)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px}
+    .card h4{margin:10px 0 6px 0;font-family:'Playfair Display', serif}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    .footer{max-width:1100px;margin:28px auto;padding:18px;background:rgba(255,255,255,0.6);border-radius:12px;display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      header{flex-direction:column;align-items:flex-start}
+      nav{width:100%;justify-content:flex-end}
+    }
+
+    /* small decorative elements */
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.9);border:1px dashed rgba(0,0,0,0.03);font-weight:600}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">MK</div>
+    <div class="site-title">
+      <h1>Mallige's Kitchen</h1>
+      <p>Pastel recipes • Baking & cozy home cooking</p>
+    </div>
+    <nav>
+      <a href="#recipes">Recipes</a>
+      <a href="#baking-tips">Baking Tips</a>
+      <a href="#about">About</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Welcome to Mallige's Kitchen</h2>
+        <p>Delicious baking recipes, family-friendly meals, and easy tips to make your kitchen a pastel paradise. Cozy, simple, and made with love.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#recipes">Explore Recipes</a>
+          <a class="btn btn-outline" href="#baking-tips">Baking Tips</a>
+        </div>
+
+        <div style="margin-top:16px" class="newsletter">
+          <strong>Join the mailing list</strong>
+          <p style="margin:6px 0 0 0;font-size:13px;color:var(--muted)">Get a new recipe every week.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks — this demo does not send emails. Paste this file to a real repo and wire a mailing service like Mailchimp.');">
+            <input placeholder="your email address" aria-label="email">
+            <div style="margin-top:8px"><button class="btn btn-primary" style="border:none;">Subscribe</button></div>
+          </form>
+        </div>
+      </div>
+
+      <aside style="border-radius:18px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7));box-shadow:var(--card-shadow)">
+        <h3 style="margin-top:0;font-family:'Playfair Display', serif;color:#b33a62">Featured Recipe</h3>
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=80" alt="Cupcakes" style="width:100%;border-radius:12px;margin-bottom:10px;object-fit:cover;max-height:220px">
+        <p style="margin:0;color:var(--muted)"><strong>Rose Vanilla Cupcakes</strong><br>Soft vanilla cupcakes with rose buttercream — perfect for tea time.</p>
+        <div style="margin-top:10px"><a class="btn btn-outline" href="#recipes">View Recipe</a></div>
+      </aside>
+    </section>
+
+    <section id="recipes" class="section">
+      <h3>Popular Recipes</h3>
+      <div class="grid">
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1512058564366-c9e3f3a0d3d5?w=900&q=80" alt="Pancakes">
+          <h4>Fluffy Ricotta Pancakes</h4>
+          <p>Light, pillowy pancakes made with ricotta — serve with honey and berries.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80" alt="Cookies">
+          <h4>Brown Butter Chocolate Chip Cookies</h4>
+          <p>Caramel notes from browned butter make these extra special.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80" alt="Bread">
+          <h4>Rustic No-Knead Bread</h4>
+          <p>A forgiving loaf with a crisp crust and tender crumb.</p>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=900&q=80" alt="Salad">
+          <h4>Warm Harvest Salad</h4>
+          <p>Roasted squash, toasted seeds, and a honey-lemon dressing.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="baking-tips" class="section">
+      <h3>Baking Tips & Tricks</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Tip 1: Measure Precisely</h4>
+          <p>Use a scale for consistent results — grams are your friend.</p>
+        </div>
+        <div class="card">
+          <h4>Tip 2: Room Temperature Ingredients</h4>
+          <p>Butter and eggs mix more evenly when they're not cold.</p>
+        </div>
+        <div class="card">
+          <h4>Tip 3: Don't Overmix</h4>
+          <p>Mix until just combined for tender cakes and muffins.</p>
+        </div>
+        <div class="card">
+          <h4>Tip 4: Use an Oven Thermometer</h4>
+          <p>Oven dials can be off — a thermometer keeps you honest.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h3>About Mallige</h3>
+      <div class="card" style="display:flex;gap:14px;align-items:center">
+        <img src="https://images.unsplash.com/photo-1520201163981-9d1b2d36b5b9?w=600&q=80" alt="home kitchen" style="width:120px;height:120px;object-fit:cover;border-radius:12px">
+        <div>
+          <h4 style="margin-top:0">Hi, I'm Mallige</h4>
+          <p style="margin:6px 0 0 0;color:var(--muted)">I love baking and simple home-cooked recipes that make people smile. This site is a cozy corner to share pastel-inspired recipes and easy techniques.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h3>Get in touch</h3>
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <p style="margin:0;color:var(--muted)">Questions, collabs, or sweet recipe ideas? Drop a message.</p>
+        <form onsubmit="event.preventDefault(); alert('This demo does not send messages. Add form handling when deploying.');" style="display:flex;flex-direction:column;gap:8px">
+          <input placeholder="Your name" required style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)">
+          <input placeholder="Your email" required style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)">
+          <textarea placeholder="Message" rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)"></textarea>
+          <div style="display:flex;gap:8px"><button class="btn btn-primary" style="border:none">Send</button><button class="btn btn-outline" style="border:none;background:transparent">Clear</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong style="font-family:'Playfair Display', serif;color:#8a2b4b">Mallige's Kitchen</strong>
+      <div style="color:var(--muted);font-size:13px">Made with love • Pastel vibes</div>
+    </div>
+    <div style="text-align:right;color:var(--muted);font-size:13px">Follow: Instagram • Pinterest • YouTube</div>
+  </footer>
+
+  <!-- Small accessibility and micro-interactivity script -->
+  <script>
+    // Enhance keyboard navigation: focus outlines for buttons
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
